@@ -235,20 +235,20 @@ jobs:
         run: |
           cd ./tests/sanity
           node ../../common/scripts/install-run-rushx.js uitest
-      - name: 'Store docker logs'
-        if: always()
-        run: |
-          cd ./tests/sanity
-          mkdir logs
-          docker logs $(docker ps | grep transactor | cut -f 1 -d ' ') > logs/transactor.log
-          docker logs $(docker ps | grep account | cut -f 1 -d ' ') > logs/account.log
-          docker logs $(docker ps | grep front | cut -f 1 -d ' ') > logs/front.log
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-results
-          path: ./tests/sanity/playwright-report/
+      # - name: 'Store docker logs'
+      #   if: always()
+      #   run: |
+      #     cd ./tests/sanity
+      #     mkdir logs
+      #     docker logs $(docker ps | grep transactor | cut -f 1 -d ' ') > logs/transactor.log
+      #     docker logs $(docker ps | grep account | cut -f 1 -d ' ') > logs/account.log
+      #     docker logs $(docker ps | grep front | cut -f 1 -d ' ') > logs/front.log
+      # - name: Upload test results
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: playwright-results
+      #     path: ./tests/sanity/playwright-report/
       # - name: Get Allure history
       #   uses: actions/checkout@v4
       #   if: ${{ github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v') }}
